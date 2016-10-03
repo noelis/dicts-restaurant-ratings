@@ -11,7 +11,7 @@ def print_restaurant_ratings(file_name):
     # split by colon, returns a list
     for line in restaurant_file:
         restaurant_name, restaurant_rating = line.rstrip().split(":")
-        restaurant_ratings[restaurant_name] = restaurant_rating
+        restaurant_ratings[restaurant_name] = int(restaurant_rating)
 
     # close file
     restaurant_file.close()
