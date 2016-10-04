@@ -1,4 +1,4 @@
-def print_restaurant_ratings(file_name):
+def print_restaurant_ratings(file_name, user_rating, user_restaurant):
     """Parses restaurant and ratings from file_name and prints results.
 
     Sample line from file_name:
@@ -6,6 +6,7 @@ def print_restaurant_ratings(file_name):
     """
     # create empty ditionary
     restaurant_ratings = {}
+    
     # open file, iterate line by line
     restaurant_file = open(file_name)
     # split by colon, returns a list
@@ -16,8 +17,14 @@ def print_restaurant_ratings(file_name):
     # close file
     restaurant_file.close()
 
-    # either loop or function that returns dictionary alphabetized
+    # prompt user for new restaurant and rating, add to dictionary
+    restaurant_ratings[user_restaurant] = user_rating
+
+    # loop that returns dictionary alphabetized
     for name, rating in sorted(restaurant_ratings.iteritems()):
         print "{} is rated at {}.".format(name, rating)
 
-print_restaurant_ratings("scores.txt")
+user_restaurant = raw_input("Enter a restaurant name: ")
+user_rating = int(raw_input("Enter a restaurant rating between 1-5: "))
+
+print_restaurant_ratings("scores.txt", user_rating, user_restaurant,)
