@@ -34,9 +34,33 @@ def print_restaurant_ratings(restaurant_ratings):
     for name, rating in sorted(restaurant_ratings.iteritems()):
         print "{} is rated at {}.".format(name, rating)
 
+def give_user_choice(rest_ratings):
+    """User chooses which function to call, based on options available."""
+
+    print """
+    Welcome to our program! Here's what's on the menu:
+    1. Would you like to see all restaurant ratings available?
+    2. Adding a new restaurant to the list?
+    3. Quitting our program?"""
+
+    user_selection = int(raw_input("Please type a number here (1, 2, or 3): "))
+
+    while user_selection != 3:
+        if user_selection == 1:
+            print_restaurant_ratings(rest_ratings)
+            user_selection = int(raw_input("Please type a number here (1, 2, or 3): "))
+        elif user_selection == 2:
+            add_restaurant_rating(rest_ratings)
+            user_selection = int(raw_input("Please type a number here (1, 2, or 3): "))
+
+    print "Goodbye!"
 
 
-print_restaurant_ratings(add_restaurant_rating(process_file("scores.txt")))
+rest_ratings = process_file("scores.txt")
+# rest_ratings_user = add_restaurant_rating(rest_ratings)
+# print_restaurant_ratings(rest_ratings_user)
+give_user_choice(rest_ratings)
+# print_restaurant_ratings(add_restaurant_rating(process_file("scores.txt")))
 
 #####################################################
 # Code V1: all in one function
